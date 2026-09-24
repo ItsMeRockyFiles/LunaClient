@@ -1,0 +1,395 @@
+/* ═══════════════════════════════════════════════════════════════════════════ */
+/*  LunaClient — App Styles                                                  */
+/* ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Layout ───────────────────────────────────────────────────────────────── */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background: var(--bg-deepest);
+}
+
+.app-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── Title Bar ────────────────────────────────────────────────────────────── */
+.titlebar {
+  height: var(--titlebar-h);
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  background: linear-gradient(135deg, #0a0818 0%, #0e0a22 50%, #08081a 100%);
+  border-bottom: 1.5px solid var(--accent-line);
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.titlebar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.titlebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.titlebar-brand .luna {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent-glow);
+  text-shadow: 0 0 20px rgba(124, 77, 255, 0.5);
+}
+
+.titlebar-brand .client {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: var(--text);
+}
+
+.titlebar-brand .version {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-left: 8px;
+  padding: 2px 8px;
+  background: var(--accent-soft);
+  border-radius: 10px;
+}
+
+.titlebar-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.connection-dot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.connection-dot .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--err);
+  box-shadow: 0 0 8px rgba(255, 85, 85, 0.5);
+  transition: all 0.3s ease;
+}
+
+.connection-dot .dot.connected {
+  background: var(--ok);
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ── Sidebar ──────────────────────────────────────────────────────────────── */
+.sidebar {
+  width: var(--sidebar-w);
+  background: var(--bg-dark);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 14px;
+  gap: 16px;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.sidebar-section-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--accent-glow);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.sidebar-separator {
+  height: 1px;
+  background: var(--border);
+  margin: 2px 0;
+}
+
+.sidebar-section { display: flex; flex-direction: column; gap: 6px; }
+
+/* ── Inject Section ───────────────────────────────────────────────────────── */
+.roblox-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  padding: 6px 0;
+}
+
+.roblox-status .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.btn-inject {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: white;
+  background: linear-gradient(135deg, var(--accent-dim), var(--accent));
+  box-shadow: 0 2px 12px rgba(124, 77, 255, 0.3);
+}
+
+.btn-inject:hover {
+  background: linear-gradient(135deg, var(--accent), var(--accent-glow));
+  box-shadow: 0 4px 20px rgba(124, 77, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.btn-inject:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-inject.attached {
+  background: linear-gradient(135deg, #2d1a5e, #3d2878);
+  cursor: default;
+}
+
+.inject-status {
+  font-size: 11px;
+  padding: 4px 0;
+  animation: fade-in 0.3s ease;
+}
+
+/* ── Script List ──────────────────────────────────────────────────────────── */
+.btn-new-tab {
+  width: 100%;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  background: var(--bg-panel);
+  border: 1px dashed var(--border);
+  font-size: 12px;
+}
+
+.btn-new-tab:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent-dim);
+  color: var(--accent-glow);
+}
+
+.script-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.script-tab-btn {
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  color: var(--text-dim);
+  background: transparent;
+  text-align: left;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.script-tab-btn:hover { background: var(--bg-hover); color: var(--text); }
+.script-tab-btn.active {
+  background: var(--accent-soft);
+  color: var(--accent-glow);
+  border-left: 2px solid var(--accent);
+}
+
+.script-tab-btn .close-x {
+  opacity: 0;
+  font-size: 14px;
+  color: var(--text-dim);
+  padding: 0 4px;
+  transition: opacity 0.15s;
+}
+
+.script-tab-btn:hover .close-x { opacity: 1; }
+.script-tab-btn .close-x:hover { color: var(--err); }
+
+/* ── Editor Area ──────────────────────────────────────────────────────────── */
+.editor-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg-mid);
+}
+
+.editor-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--bg-dark);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.btn-execute {
+  padding: 8px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 13px;
+  color: white;
+  background: linear-gradient(135deg, #2d9a50, #38c462);
+  box-shadow: 0 2px 10px rgba(56, 196, 98, 0.3);
+}
+
+.btn-execute:hover {
+  background: linear-gradient(135deg, #38c462, #50dc8c);
+  box-shadow: 0 4px 16px rgba(56, 196, 98, 0.4);
+}
+
+.btn-execute:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.btn-tool {
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  color: var(--text);
+  background: var(--bg-panel);
+}
+
+.btn-tool:hover { background: var(--bg-hover); color: var(--accent-glow); }
+
+.editor-container {
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ── Console ──────────────────────────────────────────────────────────────── */
+.console {
+  height: var(--console-h);
+  background: var(--bg-dark);
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.console-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.console-header-title {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--accent-glow);
+  text-transform: uppercase;
+}
+
+.btn-clear-console {
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  color: var(--text-dim);
+  background: transparent;
+}
+
+.btn-clear-console:hover { color: var(--text); background: var(--bg-hover); }
+
+.console-log {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.log-entry {
+  display: flex;
+  gap: 8px;
+  animation: fade-in 0.15s ease;
+}
+
+.log-entry .log-ts {
+  color: var(--text-faint);
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.log-entry .log-text { word-break: break-all; }
+.log-entry.output .log-text { color: var(--text); }
+.log-entry.error .log-text { color: var(--err); }
+.log-entry.status .log-text { color: var(--text-dim); }
+
+/* ── Status Bar ───────────────────────────────────────────────────────────── */
+.statusbar {
+  height: var(--statusbar-h);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  background: var(--bg-deepest);
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--text-dim);
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.statusbar .status-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.statusbar .dot-sm {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* ── Resize handle ────────────────────────────────────────────────────────── */
+.resize-handle {
+  height: 4px;
+  cursor: ns-resize;
+  background: transparent;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.resize-handle:hover { background: var(--accent-line); }

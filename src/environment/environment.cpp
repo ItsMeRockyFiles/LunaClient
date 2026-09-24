@@ -1,0 +1,16 @@
+#include "environment.h"
+#include "../lua/lua.h"
+
+namespace environment {
+
+void register_all(lua_State* L) {
+    register_misc(L);        // identifyexecutor, setfpscap, setclipboard, ...
+    register_filesystem(L);  // readfile, writefile, appendfile, ...
+    register_closures(L);    // hookfunction, newcclosure, ...
+    register_instances(L);   // getinstances, getnilinstances, ...
+    register_metatables(L);  // getrawmetatable, setreadonly, ...
+    register_debug(L);       // debug.* extensions
+    register_http(L);        // request, http.request
+}
+
+} // namespace environment
